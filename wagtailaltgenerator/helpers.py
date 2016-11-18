@@ -1,0 +1,2 @@
+def describe(image):
+    pass
