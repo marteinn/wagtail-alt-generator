@@ -21,6 +21,9 @@ def apply_image_alt(sender, instance, **kwargs):
     image_url = instance.file.url
     data = helpers.describe(image_url)
 
+    if not image_url.endswith(instance.title):
+        return
+
     try:
         caption = data['description']['captions'][0]['text']
     except:
