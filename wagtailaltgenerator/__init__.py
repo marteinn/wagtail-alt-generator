@@ -12,3 +12,5 @@ __build__ = 001
 __author__ = "Martin Sandström"
 __license__ = "MIT"
 __copyright__ = "Copyright 2016 Martin Sandström"
+
+default_app_config = 'wagtailaltgenerator.apps.AltGeneratorAppConfig'
