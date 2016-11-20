@@ -37,7 +37,7 @@ with open('wagtailaltgenerator/__init__.py', 'r') as fd:
 setup(
     name="wagtailaltgenerator",
     version=version,
-    description=("Google Maps widget for the GeoDjango PointField field in Wagtail"),  # NOQA
+    description=("Autogenerate image descriptions with the help of computer vision"),  # NOQA
     long_description=long_description,
     author="marteinn",
     author_email="martin@marteinn.se",
