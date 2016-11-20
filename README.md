@@ -23,7 +23,7 @@ $ pip install wagtailaltgenerator (Not yet working)
 
 ## Quick Setup
 
-1. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/) 
+1. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/)
 2. Retrive api key for the product `Computer Vision - Preview`
 3. Add the key in your django settings:
     ```
@@ -53,6 +53,8 @@ $ pip install wagtailaltgenerator (Not yet working)
 ## Tests
 
 This library include tests, just run `python runtests.py`
+
+Make sure to install dev requirements: `pip install -r requirements/dev.txt`
 
 Before running any type of tests, make sure the env variable `COMPUTER_VISION_API_KEY` is exported.
 
