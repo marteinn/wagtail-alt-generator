@@ -1,6 +1,6 @@
 # Wagtail Alt Detection
 
-Autogenerate image descriptions with the help of computer vision (onspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
+Autogenerate image descriptions with the help of computer vision (inspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
 
 
 ## Requirements
@@ -25,7 +25,7 @@ $ pip install wagtailaltgenerator (Not yet working)
 
 1. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/)
 2. Retrive api key for the product `Computer Vision - Preview`
-3. Add the key in your django settings:
+3. Add the key to your django settings:
     ```
     COMPUTER_VISION_API_KEY = 'yourkey'
     ```
@@ -59,12 +59,6 @@ Make sure to install dev requirements: `pip install -r requirements/dev.txt`
 Before running any type of tests, make sure the env variable `COMPUTER_VISION_API_KEY` is exported.
 
 You can also run separate test cases: `runtests.py tests.GenerateLabelTest`
-
-
-## Credits
-
-- Inspiration from [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)
-- [Cognitive-Vision-Python](https://github.com/Microsoft/Cognitive-Vision-Python)
 
 
 ## Contributing
