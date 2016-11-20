@@ -47,7 +47,7 @@ $ pip install wagtailaltgenerator (Not yet working)
 
 ## Settings
 
-- `COMPUTER_VISION_API_KEY`: Api key to the Azure Computer Vision product.
+- `COMPUTER_VISION_API_KEY`: Computer Vision api key
 
 
 ## Tests
