@@ -1,6 +1,6 @@
 # Wagtail Alt Detection
 
-Autogenerate image descriptions with the help of computer vision. (Inspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
+Autogenerate image descriptions with the help of computer vision (onspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
 
 
 ## Requirements
@@ -8,6 +8,7 @@ Autogenerate image descriptions with the help of computer vision. (Inspired by [
 - Python 2.7 / Python 3.4 / PyPy
 - Django 1.8+
 - Wagtail 1.7+
+- An Microsoft Cognitive Service account
 - Images must be accessible by third part (to enable Computer Vision processing)
 
 
@@ -22,12 +23,13 @@ $ pip install wagtailaltgenerator (Not yet working)
 
 ## Quick Setup
 
-1. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/) and retrive api key for the product `Computer Vision - Preview`
-2. Add the key in your django settings:
+1. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/) 
+2. Retrive api key for the product `Computer Vision - Preview`
+3. Add the key in your django settings:
     ```
     COMPUTER_VISION_API_KEY = 'yourkey'
     ```
-3. Make sure `wagtailaltgenerator` is added to your `INSTALLED_APPS`.
+4. Make sure `wagtailaltgenerator` is added to your `INSTALLED_APPS`.
     ```python
     INSTALLED_APPS = (
         # ...
@@ -38,9 +40,9 @@ $ pip install wagtailaltgenerator (Not yet working)
 
 ## Usage
 
-1. Upload image through the Wagtail uploader
-2. Watch the title get generated
-3. Done!
+1. Upload an image through Wagtail
+2. Watch the title get generated...
+3. ...And done!
 
 
 ## Settings
