@@ -1,4 +1,4 @@
-# Wagtail Alt Detection
+# Wagtail Alt Generator
 
 Autogenerate image descriptions with the help of computer vision (inspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
 
