@@ -63,6 +63,19 @@ Before running any type of tests, make sure the env variable `COMPUTER_VISION_AP
 You can also run separate test cases: `runtests.py tests.GenerateLabelTest`
 
 
+## Git hooks
+
+### Release start
+
+These hooks will automatically bump the application version when using `git flow release ...`
+
+```
+chmod +x $PWD/git-hooks/release-start.sh
+ln -nfs $PWD/git-hooks/release-start.sh .git/hooks/post-flow-release-start
+ln -nfs $PWD/git-hooks/release-start.sh .git/hooks/post-flow-hotfix-start
+```
+
+
 ## Distribution
 
 ### Register
