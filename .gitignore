@@ -42,3 +42,7 @@ docs/_build
 venv*
 
 .idea
+
+# Temporary folders
+/tmp
+/temp
