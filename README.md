@@ -17,7 +17,7 @@ Autogenerate image descriptions with the help of computer vision (inspired by [a
 Install the library with pip:
 
 ```
-$ pip install wagtailaltgenerator (Not yet working)
+$ pip install wagtailaltgenerator
 ```
 
 
