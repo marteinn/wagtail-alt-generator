@@ -5,11 +5,12 @@ Autogenerate image descriptions with the help of computer vision (inspired by [a
 
 ## Requirements
 
-- Python 2.7
+- Python 2.7 / Python 3.5+
 - Django 1.8+
 - Wagtail 1.7+
 - An Microsoft Cognitive Service account
-- Images must be accessible by third part (to enable Computer Vision processing)
+
+- NOTE: Images must be accessible by third part (to enable Computer Vision processing). That means any image that be reached through yourdomain.com/yourimage.jpg will work, while localhost won't.
 
 
 ## Installation
