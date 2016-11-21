@@ -1,0 +1,2 @@
+requests
+wagtail>=1.7
