@@ -1,6 +1,10 @@
+[![PyPI version](https://badge.fury.io/py/wagtailaltgenerator.svg)](https://badge.fury.io/py/wagtailaltgenerator)
+
 # Wagtail Alt Generator
 
-Autogenerate image descriptions with the help of computer vision (inspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
+Insert image description and tags with the help of computer vision (inspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
+
+![Screen1](https://raw.githubusercontent.com/marteinn/wagtail-alt-generator/develop/img/screenshot.png)
 
 
 ## Requirements
@@ -51,6 +55,8 @@ $ pip install wagtailaltgenerator
 ## Settings
 
 - `COMPUTER_VISION_API_KEY`: Computer Vision api key
+- `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (True by default)
+- `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (unlimited by default)
 
 
 ## Tests
