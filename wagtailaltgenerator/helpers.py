@@ -8,6 +8,7 @@ import requests
 API_URL = 'https://api.projectoxford.ai'
 
 
+
 def describe(image_url):
     headers = {
         'Content-Type': 'application/json',

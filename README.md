@@ -55,8 +55,8 @@ $ pip install wagtailaltgenerator
 ## Settings
 
 - `COMPUTER_VISION_API_KEY`: Computer Vision api key
-- `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (On by default)
-- `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (-1, unlimited by default)
+- `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (True by default)
+- `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (unlimited by default)
 
 
 ## Tests
