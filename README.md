@@ -4,7 +4,9 @@
 
 Insert image description and tags with the help of computer vision (inspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
 
-![Screen1](https://raw.githubusercontent.com/marteinn/wagtail-alt-generator/develop/img/screenshot.png)
+[![Screen1](https://raw.githubusercontent.com/marteinn/wagtail-alt-generator/develop/img/screenshot.png)](https://www.youtube.com/watch?v=1JeCjKx0lko)
+
+[Screencast demo](https://www.youtube.com/watch?v=1JeCjKx0lko)
 
 
 ## Requirements
