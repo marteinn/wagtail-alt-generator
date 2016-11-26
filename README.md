@@ -16,7 +16,7 @@ Insert image description and tags with the help of computer vision (inspired by 
 - Wagtail 1.7+
 - An Microsoft Cognitive Service account
 
-- NOTE: Images must be accessible by third part (to enable Computer Vision processing). That means any image that be reached through yourdomain.com/yourimage.jpg will work, while localhost won't.
+- NOTE: Images must be accessible by third part (to enable computer vision processing). That means any image that can be reached through, for instance yourdomain.com/yourimage.jpg will work, while localhost images won't.
 
 
 ## Installation
@@ -56,7 +56,7 @@ $ pip install wagtailaltgenerator
 
 ## Settings
 
-- `COMPUTER_VISION_API_KEY`: Computer Vision api key
+- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Service api key
 - `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (True by default)
 - `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (unlimited by default)
 
@@ -78,7 +78,7 @@ You can also run separate test cases: `runtests.py tests.GenerateLabelTest`
 
 These hooks will automatically bump the application version when using `git flow release ...`
 
-```
+```bash
 chmod +x $PWD/git-hooks/release-start.sh
 ln -nfs $PWD/git-hooks/release-start.sh .git/hooks/post-flow-release-start
 ln -nfs $PWD/git-hooks/release-start.sh .git/hooks/post-flow-hotfix-start
@@ -89,14 +89,14 @@ ln -nfs $PWD/git-hooks/release-start.sh .git/hooks/post-flow-hotfix-start
 
 ### Register
 
-```
+```bash
 python setup.py egg_info
 twine register dist/mypkg.wh
 ```
 
 ### Publish
 
-```
+```bash
 python setup.py sdist
 twine upload dist/*
 ```
