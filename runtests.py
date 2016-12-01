@@ -9,13 +9,21 @@ from django.core.management import execute_from_command_line
 
 if not settings.configured:
     settings.configure(
-        COMPUTER_VISION_API_KEY=os.environ['COMPUTER_VISION_API_KEY'],
+        # COMPUTER_VISION_API_KEY=os.environ['COMPUTER_VISION_API_KEY'],
         DATABASES={
             "default": {
                 "ENGINE": "django.db.backends.sqlite3",
             }
         },
         INSTALLED_APPS=[
+            'django.contrib.contenttypes',
+            'django.contrib.auth',
+            'django.contrib.sites',
+            'wagtail.wagtailcore',
+            'wagtail.wagtailsites',
+            'wagtail.wagtailusers',
+            'wagtail.wagtailimages',
+            'taggit',
             "wagtailaltgenerator",
             "tests",
         ],
