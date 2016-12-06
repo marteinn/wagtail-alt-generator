@@ -9,10 +9,10 @@ from wagtailaltgenerator.providers import (
 )
 
 
-class RekognitionService(AbstractProvider):
+class Rekognition(AbstractProvider):
     def __init__(self, *args, **kwargs):
         self.client = boto3.client('rekognition')
-        super(RekognitionService, self).__init__(*args, **kwargs)
+        super(Rekognition, self).__init__(*args, **kwargs)
 
     def describe(self, image):
         image_url = image.file.url

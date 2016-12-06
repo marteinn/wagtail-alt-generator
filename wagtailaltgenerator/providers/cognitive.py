@@ -30,7 +30,7 @@ def describe(image_url):
     return response.json()
 
 
-class CognitiveService(AbstractProvider):
+class Cognitive(AbstractProvider):
     def describe(self, image):
         image_url = image.file.url
         data = describe(image_url)

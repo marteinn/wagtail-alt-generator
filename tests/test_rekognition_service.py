@@ -3,7 +3,7 @@ from django.test import TestCase
 from wagtail.wagtailimages.models import Image
 
 from wagtailaltgenerator.providers import get_provider
-from wagtailaltgenerator.providers.rekognition_service import RekognitionService
+from wagtailaltgenerator.providers.rekognition import Rekognition
 from tests.factories import MockedUrlImageFile, ImageFactory
 
 
@@ -16,7 +16,7 @@ class RekognitionTagTest(TestCase):
         image.file = MockedUrlImageFile(image_url=test_image)
 
         provider = get_provider(
-            'wagtailaltgenerator.providers.rekognition_service.RekognitionService'
+            'wagtailaltgenerator.providers.rekognition.Rekognition'
         )
 
         data = provider().describe(image)

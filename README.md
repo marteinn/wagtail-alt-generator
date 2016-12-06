@@ -62,18 +62,34 @@ $ pip install wagtailaltgenerator
 
 ## Settings
 
-- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Service api key
 - `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (True by default)
 - `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (unlimited by default)
+
+### Cognitive Services
+
+- `ALT_GENERATOR_PROVIDER`: `wagtailaltgenerator.providers.cognitive.Cognitive`
+- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Service api key
+
+
+### Rekognition
+
+The Rekognition provider is based on [boto](http://boto3.readthedocs.io/) and uses its [configuration](http://boto3.readthedocs.io/en/latest/guide/configuration.html).
+
+- `ALT_GENERATOR_PROVIDER`: `wagtailaltgenerator.providers.rekognition.Rekognition`
 
 
 ## Tests
 
-This library include tests, just run `python runtests.py`
+This library include tests for the different providers.
 
-Make sure to install dev requirements: `pip install -r requirements/dev.txt`
+### Getting started
 
-Before running any type of tests, make sure the env variable `COMPUTER_VISION_API_KEY` is exported.
+- Make sure to install dev requirements: `pip install -r requirements/tests.txt`
+- Copy test_vars.sh and fill in the blanks `cp test_vars.example.sh test_vars.sh`
+
+### Running
+
+- Run tests: `source test_vars.sh && python runtests.py`
 
 You can also run separate test cases: `runtests.py tests.GenerateLabelTest`
 

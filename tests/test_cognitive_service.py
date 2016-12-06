@@ -2,8 +2,8 @@ from django.test import TestCase, override_settings
 
 from wagtail.wagtailimages.models import Image
 from wagtailaltgenerator.providers import get_provider
-from wagtailaltgenerator.providers.cognitive_service import (
-    CognitiveService,
+from wagtailaltgenerator.providers.cognitive import (
+    Cognitive,
     describe,
 )
 
@@ -27,7 +27,7 @@ class CognitiveServiceTest(TestCase):
         image.file = MockedUrlImageFile(image_url=test_image)
 
         provider = get_provider(
-            'wagtailaltgenerator.providers.cognitive_service.CognitiveService'
+            'wagtailaltgenerator.providers.cognitive.Cognitive'
         )
 
         data = provider().describe(image)
