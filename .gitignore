@@ -47,3 +47,6 @@ venv*
 /tmp
 /temp
 /original_images
+
+# Testing
+test_vars.sh
