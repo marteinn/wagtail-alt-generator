@@ -20,7 +20,7 @@ Insert image description and tags with the help of computer vision (inspired by 
 - Python 2.7 / Python 3.5+
 - Django 1.8+
 - Wagtail 1.7+
-- Access to any of the supported providers
+- Access to any of the [supported providers](#providers)
 
 - NOTE: Images must be accessible by third part (to enable computer vision processing). That means any image that can be reached through, for instance yourdomain.com/yourimage.jpg will work, while localhost images won't.
 
@@ -60,18 +60,36 @@ $ pip install wagtailaltgenerator
 3. ...And done!
 
 
-## Settings
+## General settings
 
 - `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (True by default)
 - `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (unlimited by default)
+- `ALT_GENERATOR_PROVIDER`: The provider you would like to use (Cognitive Services is default)
 
-### Cognitive Services
+
+## Providers
+
+### Microsoft Cognitive Services
+
+Microsofts computer vision api. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
+
+- (Pros) Supports both tags and descriptions
+- (Cons) Service still in preview
+- (Cons) Requires monthly api key rotation
+
+#### Settings
 
 - `ALT_GENERATOR_PROVIDER`: `wagtailaltgenerator.providers.cognitive.Cognitive`
 - `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Service api key
 
+### AWS Rekognition
 
-### Rekognition
+Amazon's image analysis api. [Docs](https://aws.amazon.com/rekognition/)
+
+- (Pros) Stable
+- (Cons) Supports only tags
+
+#### Settings
 
 The Rekognition provider is based on [boto](http://boto3.readthedocs.io/) and uses its [configuration](http://boto3.readthedocs.io/en/latest/guide/configuration.html).
 
@@ -93,22 +111,6 @@ This library include tests for the different providers.
 
 You can also run separate test cases: `runtests.py tests.GenerateLabelTest`
 
-
-## Providers
-
-### Microsoft Cognitive Services
-
-+ Supports both tags and descriptions
-- Service still in preview
-- Requires monthly api key rotation
-
-### AWS Rekognition
-
-+ Stable
-- Supports only tags
-
-
-## Git hooks
 
 ### Release start
 
