@@ -32,7 +32,7 @@ def describe(image_url):
 
 class CognitiveService(AbstractProvider):
     def describe(self, image):
-        image_url = self.get_image_url(image)
+        image_url = image.file.url
         data = describe(image_url)
 
         description = None

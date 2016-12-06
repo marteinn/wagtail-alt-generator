@@ -1,2 +1,3 @@
 requests
 wagtail>=1.7
+factory-boy
