@@ -13,11 +13,8 @@ def get_current_provider():
 
 
 def get_provider(path):
-    module_path, provider_name = path.rsplit('.', 1)
-    module = importlib.import_module(module_path)
-
-    provider_cls = getattr(module, provider_name)
-    return provider_cls
+    module_name, class_name = path.rsplit('.', 1)
+    return getattr(importlib.import_module(module_name), class_name)
 
 
 class AbstractProvider(object):

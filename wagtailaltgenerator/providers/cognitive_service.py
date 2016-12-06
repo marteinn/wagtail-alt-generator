@@ -32,8 +32,8 @@ def describe(image_url):
 
 
 class CognitiveService(AbstractProvider):
-    def describe(image):
-        image_url = instance.file.url
+    def describe(self, image):
+        image_url = self.get_image_url(image)
         data = describe(image_url)
 
         description = None

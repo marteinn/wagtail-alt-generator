@@ -27,7 +27,7 @@ def apply_image_alt(sender, instance, **kwargs):
     if not kwargs['created']:
         return
 
-    provider = get_current_provider()
+    provider = get_current_provider()()
     image_url = instance.file.url
 
     result = provider.describe(instance)
