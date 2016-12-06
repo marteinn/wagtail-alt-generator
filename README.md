@@ -9,12 +9,18 @@ Insert image description and tags with the help of computer vision (inspired by 
 [Screencast demo](https://www.youtube.com/watch?v=1JeCjKx0lko)
 
 
+## Supported providers
+
+- Microsoft Cognitive Service
+- AWS Rekognition
+
+
 ## Requirements
 
 - Python 2.7 / Python 3.5+
 - Django 1.8+
 - Wagtail 1.7+
-- An Microsoft Cognitive Service account
+- Access to any of the supported providers
 
 - NOTE: Images must be accessible by third part (to enable computer vision processing). That means any image that can be reached through, for instance yourdomain.com/yourimage.jpg will work, while localhost images won't.
 
@@ -28,7 +34,7 @@ $ pip install wagtailaltgenerator
 ```
 
 
-## Quick Setup
+## Quick Setup (on Microsoft Cognitive Service)
 
 1. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/)
 2. Retrive api key for the product `Computer Vision - Preview`
@@ -70,6 +76,20 @@ Make sure to install dev requirements: `pip install -r requirements/dev.txt`
 Before running any type of tests, make sure the env variable `COMPUTER_VISION_API_KEY` is exported.
 
 You can also run separate test cases: `runtests.py tests.GenerateLabelTest`
+
+
+## Providers
+
+### Microsoft Cognitive Services
+
++ Supports both tags and descriptions
+- Service still in preview
+- Requires monthly api key rotation
+
+### AWS Rekognition
+
++ Stable
+- Supports only tags
 
 
 ## Git hooks
