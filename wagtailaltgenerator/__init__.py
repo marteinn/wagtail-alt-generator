@@ -4,6 +4,7 @@
 """
 wagtailaltgenerator
 ----------
+Insert image description and tags with the help of computer vision
 
 """
 __title__ = "wagtailaltgenerator"

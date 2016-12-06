@@ -1,7 +1,7 @@
 from django.conf import settings
 
-DEFAULT_PROVIDER = 'wagtailaltgenerator.providers.cognitive_service.CognitiveService'  # NOQA
 
+DEFAULT_PROVIDER = 'wagtailaltgenerator.providers.cognitive_service.CognitiveService'  # NOQA
 
 ALT_GENERATOR_USE_TAGS = getattr(settings, 'ALT_GENERATOR_USE_TAGS', True)
 ALT_GENERATOR_MAX_TAGS = getattr(settings, 'ALT_GENERATOR_MAX_TAGS', -1)
