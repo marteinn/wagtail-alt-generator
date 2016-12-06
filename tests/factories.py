@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.files.images import ImageFile
 import factory
 from wagtail.wagtailimages.tests.utils import get_test_image_file
 from wagtail.wagtailimages.models import Image
