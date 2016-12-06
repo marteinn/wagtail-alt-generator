@@ -12,7 +12,6 @@ try:
 except ImportError:
     from wagtail.wagtailimages.models import get_image_model
 
-from wagtailaltgenerator import helpers
 from wagtailaltgenerator.providers import get_current_provider
 
 
