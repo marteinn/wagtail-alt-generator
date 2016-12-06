@@ -12,13 +12,10 @@ try:
 except ImportError:
     from wagtail.wagtailimages.models import get_image_model
 
-from wagtailaltgenerator import helpers
+from wagtailaltgenerator.providers import get_current_provider
+from wagtailaltgenerator import app_settings
 
 image_cls = get_image_model()
-
-
-ALT_GENERATOR_USE_TAGS = getattr(settings, 'ALT_GENERATOR_USE_TAGS', True)
-ALT_GENERATOR_MAX_TAGS = getattr(settings, 'ALT_GENERATOR_MAX_TAGS', -1)
 
 
 @receiver(post_save, sender=image_cls, dispatch_uid="apply_image_alt")
@@ -26,39 +23,34 @@ def apply_image_alt(sender, instance, **kwargs):
     if not kwargs['created']:
         return
 
+    provider = get_current_provider()()
     image_url = instance.file.url
-    data = helpers.describe(image_url)
+
+    result = provider.describe(instance)
 
     if image_url.endswith(instance.title):
-        _apply_title(instance, data)
+        _apply_title(instance, result)
 
-    if ALT_GENERATOR_USE_TAGS:
-        _apply_tags(instance, data)
+    if app_settings.ALT_GENERATOR_USE_TAGS:
+        _apply_tags(instance, result)
 
     instance.save()
 
 
-def _apply_title(instance, data):
-    try:
-        caption = data['description']['captions'][0]['text']
-    except:
-        caption = None
-
-    if not caption:
+def _apply_title(instance, result):
+    if not result.description:
         return
 
-    instance.title = caption
+    instance.title = result.description
 
 
-def _apply_tags(instance, data):
-    tags = []
+def _apply_tags(instance, result):
+    if not result.tags:
+        return
 
-    try:
-        tags = data['description']['tags']
-    except:
-        pass
+    tags = result.tags
 
-    if ALT_GENERATOR_MAX_TAGS != -1:
-        tags = tags[:ALT_GENERATOR_MAX_TAGS]
+    if app_settings.ALT_GENERATOR_MAX_TAGS != -1:
+        tags = tags[:app_settings.ALT_GENERATOR_MAX_TAGS]
 
     instance.tags.add(*tags)

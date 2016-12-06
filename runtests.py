@@ -8,20 +8,34 @@ from django.core.management import execute_from_command_line
 
 
 if not settings.configured:
-    settings.configure(
-        COMPUTER_VISION_API_KEY=os.environ['COMPUTER_VISION_API_KEY'],
+    params = dict(
         DATABASES={
             "default": {
                 "ENGINE": "django.db.backends.sqlite3",
             }
         },
         INSTALLED_APPS=[
+            'django.contrib.contenttypes',
+            'django.contrib.auth',
+            'django.contrib.sites',
+            'wagtail.wagtailcore',
+            'wagtail.wagtailsites',
+            'wagtail.wagtailusers',
+            'wagtail.wagtailimages',
+            'taggit',
             "wagtailaltgenerator",
             "tests",
         ],
         MIDDLEWARE_CLASSES=[],
         ROOT_URLCONF="tests.urls"
     )
+
+    if 'COMPUTER_VISION_API_KEY' in os.environ:
+        params.update(dict(
+            COMPUTER_VISION_API_KEY=os.environ['COMPUTER_VISION_API_KEY'],
+        ))
+
+    settings.configure(**params)
 
 
 def runtests():
