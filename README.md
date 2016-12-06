@@ -82,12 +82,19 @@ Microsofts computer vision api. [Docs](https://microsoft.com/cognitive-services/
 - `ALT_GENERATOR_PROVIDER`: `wagtailaltgenerator.providers.cognitive.Cognitive`
 - `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Service api key
 
+
 ### AWS Rekognition
 
 Amazon's image analysis api. [Docs](https://aws.amazon.com/rekognition/)
 
 - (Pros) Stable
 - (Cons) Supports only tags
+
+#### Installing
+
+When installing the package add rekognition as an extra.
+
+- `pip install wagtailaltgenerator[rekognition]`
 
 #### Settings
 
