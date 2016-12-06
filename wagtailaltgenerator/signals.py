@@ -13,13 +13,9 @@ except ImportError:
     from wagtail.wagtailimages.models import get_image_model
 
 from wagtailaltgenerator.providers import get_current_provider
-
+from wagtailaltgenerator import app_settings
 
 image_cls = get_image_model()
-
-
-ALT_GENERATOR_USE_TAGS = getattr(settings, 'ALT_GENERATOR_USE_TAGS', True)
-ALT_GENERATOR_MAX_TAGS = getattr(settings, 'ALT_GENERATOR_MAX_TAGS', -1)
 
 
 @receiver(post_save, sender=image_cls, dispatch_uid="apply_image_alt")
@@ -35,7 +31,7 @@ def apply_image_alt(sender, instance, **kwargs):
     if image_url.endswith(instance.title):
         _apply_title(instance, result)
 
-    if ALT_GENERATOR_USE_TAGS:
+    if app_settings.ALT_GENERATOR_USE_TAGS:
         _apply_tags(instance, result)
 
     instance.save()
@@ -54,7 +50,7 @@ def _apply_tags(instance, result):
 
     tags = result.tags
 
-    if ALT_GENERATOR_MAX_TAGS != -1:
-        tags = tags[:ALT_GENERATOR_MAX_TAGS]
+    if app_settings.ALT_GENERATOR_MAX_TAGS != -1:
+        tags = tags[:app_settings.ALT_GENERATOR_MAX_TAGS]
 
     instance.tags.add(*tags)

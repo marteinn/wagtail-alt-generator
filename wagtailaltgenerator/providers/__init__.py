@@ -3,12 +3,11 @@ import importlib
 from django.conf import settings
 from django.utils.functional import cached_property
 
-
-DEFAULT_PROVIDER = 'wagtailaltgenerator.providers.cognitive_service.CognitiveService'  # NOQA
+from wagtailaltgenerator import app_settings
 
 
 def get_current_provider():
-    provider = getattr(settings, 'ALT_GENERATOR_PROVIDER', DEFAULT_PROVIDER)
+    provider = app_settings.ALT_GENERATOR_PROVIDER
     return get_provider(provider)
 
 

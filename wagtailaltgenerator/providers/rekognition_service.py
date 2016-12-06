@@ -2,12 +2,14 @@
 
 import boto3
 import requests
-from django.conf import settings
-from wagtailaltgenerator.providers import AbstractProvider, DescriptionResult
+
+from wagtailaltgenerator.providers import (
+    AbstractProvider,
+    DescriptionResult
+)
 
 
 class RekognitionService(AbstractProvider):
-
     def __init__(self, *args, **kwargs):
         self.client = boto3.client('rekognition')
         super(RekognitionService, self).__init__(*args, **kwargs)
