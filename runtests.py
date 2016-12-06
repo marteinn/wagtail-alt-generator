@@ -8,8 +8,7 @@ from django.core.management import execute_from_command_line
 
 
 if not settings.configured:
-    settings.configure(
-        # COMPUTER_VISION_API_KEY=os.environ['COMPUTER_VISION_API_KEY'],
+    params = dict(
         DATABASES={
             "default": {
                 "ENGINE": "django.db.backends.sqlite3",
@@ -30,6 +29,13 @@ if not settings.configured:
         MIDDLEWARE_CLASSES=[],
         ROOT_URLCONF="tests.urls"
     )
+
+    if 'COMPUTER_VISION_API_KEY' in os.environ:
+        params.update(dict(
+            COMPUTER_VISION_API_KEY=os.environ['COMPUTER_VISION_API_KEY'],
+        ))
+
+    settings.configure(**params)
 
 
 def runtests():
