@@ -33,17 +33,20 @@ Install the library with pip:
 $ pip install wagtailaltgenerator
 ```
 
+Depending on your selected provider, you might also need extra requirements (example `pip install wagtailaltgenerator[rekognition]`. Please check the install instructions for the various providers below.
+
 
 ## Quick Setup (on Microsoft Cognitive Service)
 
-1. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/)
-2. Retrieve API key for the product `Computer Vision - Preview`
-3. Add the key to your django settings:
+1. Install `pip install wagtailaltgenerator`
+2. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/)
+3. Retrieve API key for the product `Computer Vision - Preview`
+4. Add the key to your django settings:
 
     ```
     COMPUTER_VISION_API_KEY = 'yourkey'
     ```
-4. Make sure `wagtailaltgenerator` is added to your `INSTALLED_APPS`.
+5. Make sure `wagtailaltgenerator` is added to your `INSTALLED_APPS`.
 
     ```python
     INSTALLED_APPS = (
@@ -56,7 +59,7 @@ $ pip install wagtailaltgenerator
 ## Usage
 
 1. Upload an image through Wagtail
-2. Watch the title get generated...
+2. Watch the title and/or tags get generated...
 3. ...And done!
 
 
@@ -73,9 +76,9 @@ $ pip install wagtailaltgenerator
 
 Microsofts computer vision API. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
 
-- (Pros) Supports both tags and descriptions
-- (Cons) Service still in preview
-- (Cons) Requires monthly API key rotation
+- (+) Supports both tags and descriptions
+- (-) Service still in preview
+- (-) Requires monthly API key rotation
 
 #### Settings
 
@@ -87,8 +90,8 @@ Microsofts computer vision API. [Docs](https://microsoft.com/cognitive-services/
 
 Amazon's image analysis API. [Docs](https://aws.amazon.com/rekognition/)
 
-- (Pros) Stable
-- (Cons) Supports only tags
+- (+) Stable
+- (-) Supports only tags
 
 #### Installing
 
