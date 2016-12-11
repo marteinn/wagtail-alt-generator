@@ -46,7 +46,8 @@ setup(
     include_package_data=True,
     install_requires=install_requires,
     extras_require={
-        'rekognition': ["boto3>=1.4,<1.5"],
+        'rekognition': ['boto3>=1.4,<1.5'],
+        'google_vision': ['google-api-python-client>=1.5.5'],
     },
     license="MIT",
     zip_safe=False,
