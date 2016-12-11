@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 
 from django.conf import settings
 import requests
@@ -11,6 +12,8 @@ from wagtailaltgenerator import app_settings
 
 
 API_URL = 'https://api.projectoxford.ai'
+
+logger = logging.getLogger(__name__)
 
 
 def describe(image_url):
@@ -29,6 +32,7 @@ def describe(image_url):
                              )
 
     if response.status_code != 200:
+        logging.warn(response)
         return None
 
     return response.json()
@@ -37,6 +41,7 @@ def describe(image_url):
 class Cognitive(AbstractProvider):
     def describe(self, image):
         image_url = image.file.url
+
         data = describe(image_url)
 
         description = None
