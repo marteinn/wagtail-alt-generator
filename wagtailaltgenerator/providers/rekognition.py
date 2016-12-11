@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import boto3
-import requests
 
 from wagtailaltgenerator.providers import (
     AbstractProvider,
     DescriptionResult
 )
+from wagtailaltgenerator import app_settings
 
 
 class Rekognition(AbstractProvider):
@@ -16,21 +16,20 @@ class Rekognition(AbstractProvider):
 
     def describe(self, image):
         image_url = image.file.url
-        image_data = requests.get(image_url)
+        image_data = self.get_image_data(image)
 
         description = None
         tags = []
 
-        if image_data.status_code == 200:
+        if image_data:
             response = self.client.detect_labels(
                 Image={
-                    'Bytes': image_data.content,
+                    'Bytes': image_data,
                 },
-                MinConfidence=50
+                MinConfidence=app_settings.ALT_GENERATOR_MIN_CONFIDENCE,
             )
             if response['Labels']:
-                for label in response['Labels']:
-                    tags.append(label['Name'])
+                tags = [label['Name'] for label in response['Labels']]
 
         return DescriptionResult(
             description=description,
