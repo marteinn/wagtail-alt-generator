@@ -52,8 +52,6 @@ class GoogleVision(AbstractProvider):
             tags = [label['description'] for label in labels
                         if label['score'] >= min_confidence]
 
-            print(tags)
-
         return DescriptionResult(
             description=description,
             tags=tags,
