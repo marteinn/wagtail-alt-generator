@@ -133,8 +133,6 @@ The Google Vision provider is based on `google-api-python-client` and are typica
 
 You can authenticate locally with the [Google Cloud SDK](https://cloud.google.com/sdk/), on production with either the built in credentials (if you already run on Google Cloud) or with a [Service Account key file](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#creatinganaccount).
 
-[Googles implementation sample](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/vision/api/label) gives a good insight.
-
 
 ## Tests
 
