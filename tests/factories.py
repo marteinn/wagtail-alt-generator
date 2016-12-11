@@ -3,8 +3,10 @@ from __future__ import absolute_import, unicode_literals
 import factory
 from wagtail.wagtailimages.tests.utils import get_test_image_file
 from wagtail.wagtailimages.models import Image
+from django.db.models import signals
 
 
+@factory.django.mute_signals(signals.post_save)
 class ImageFactory(factory.DjangoModelFactory):
     title = factory.sequence(lambda x: 'image-{0}'.format([x]))
     file = factory.LazyAttribute(lambda x: get_test_image_file())

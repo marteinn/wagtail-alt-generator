@@ -27,7 +27,8 @@ if not settings.configured:
             "tests",
         ],
         MIDDLEWARE_CLASSES=[],
-        ROOT_URLCONF="tests.urls"
+        ROOT_URLCONF='tests.urls',
+        ALT_GENERATOR_MIN_CONFIDENCE=0,
     )
 
     if 'COMPUTER_VISION_API_KEY' in os.environ:
