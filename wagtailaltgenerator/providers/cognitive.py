@@ -7,6 +7,7 @@ from wagtailaltgenerator.providers import (
     AbstractProvider,
     DescriptionResult,
 )
+from wagtailaltgenerator import app_settings
 
 
 API_URL = 'https://api.projectoxford.ai'
@@ -27,6 +28,9 @@ def describe(image_url):
                              json=json_data
                              )
 
+    if response.status_code != 200:
+        return None
+
     return response.json()
 
 
@@ -38,10 +42,21 @@ class Cognitive(AbstractProvider):
         description = None
         tags = []
 
-        try:
-            description = data['description']['captions'][0]['text']
-        except:
-            pass
+        min_confidence = float(app_settings.ALT_GENERATOR_MIN_CONFIDENCE)/100.0
+
+        if not data:
+            return DescriptionResult(
+                description=description,
+                tags=tags,
+            )
+
+        if 'description' in data and len(data['description']['captions']):
+            captions = data['description']['captions']
+            captions = [caption['text'] for caption in captions
+                        if caption['confidence'] >= min_confidence]
+
+            if len(captions):
+                description = captions[0]
 
         try:
             tags = data['description']['tags']

@@ -68,6 +68,7 @@ Depending on your selected provider, you might also need extra requirements (exa
 - `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (True by default)
 - `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (unlimited by default)
 - `ALT_GENERATOR_PROVIDER`: The provider you would like to use (Cognitive Services is default)
+- `ALT_GENERATOR_MIN_CONFIDENCE`: The minimum accepted percentage of confidence the provider has in describing the image (default 0 = accept any).
 
 
 ## Providers

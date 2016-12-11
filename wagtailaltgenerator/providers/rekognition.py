@@ -7,6 +7,7 @@ from wagtailaltgenerator.providers import (
     AbstractProvider,
     DescriptionResult
 )
+from wagtailaltgenerator import app_settings
 
 
 class Rekognition(AbstractProvider):
@@ -26,11 +27,10 @@ class Rekognition(AbstractProvider):
                 Image={
                     'Bytes': image_data.content,
                 },
-                MinConfidence=50
+                MinConfidence=app_settings.ALT_GENERATOR_MIN_CONFIDENCE,
             )
             if response['Labels']:
-                for label in response['Labels']:
-                    tags.append(label['Name'])
+                tags = [label['Name'] for label in response['Labels']]
 
         return DescriptionResult(
             description=description,
