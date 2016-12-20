@@ -25,12 +25,12 @@ VERSION_BUILD="$(echo $VERSION | tr -d .)"
 ROOTDIR=$(git rev-parse --show-toplevel)
 
 # Bump django version
-sed -i.bak 's/^__version__.=.*/__version__ = '\'''$VERSION''\''/' $ROOTDIR/wagtailaltgenerator/__init__.py
-rm wagtailaltgenerator/__init__.py.bak
+sed -i.bak 's/^__version__.=.*/__version__ = '\'''$VERSION''\''/' $ROOTDIR/wagtailsystemtext/__init__.py
+rm wagtailsystemtext/__init__.py.bak
 
 # Bump django build
-sed -i.bak 's/^__build__.=.*/__build__ = '$VERSION_BUILD'/' $ROOTDIR/wagtailaltgenerator/__init__.py
-rm wagtailaltgenerator/__init__.py.bak
+sed -i.bak 's/^__build__.=.*/__build__ = '$VERSION_BUILD'/' $ROOTDIR/wagtailsystemtext/__init__.py
+rm wagtailsystemtext/__init__.py.bak
 
 # Commit changes
 git commit -a -m "Version bump $VERSION"
