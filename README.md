@@ -11,7 +11,7 @@ Insert image description and tags with the help of computer vision (inspired by 
 
 ## Supported providers
 
-- [Microsoft Cognitive Service](#microsoft-cognitive-services)
+- [Microsoft Cognitive Services](#microsoft-cognitive-services)
 - [AWS Rekognition](#aws-rekognition)
 - [Google Vision](#google-vision)
 
@@ -75,7 +75,7 @@ Depending on your selected provider, you might also need extra requirements (exa
 
 ### Microsoft Cognitive Services
 
-Microsofts computer vision API. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
+Microsoft's computer vision API. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
 
 - (+) Supports both tags and descriptions
 - (-) Service still in preview
@@ -84,7 +84,7 @@ Microsofts computer vision API. [Docs](https://microsoft.com/cognitive-services/
 #### Settings
 
 - `ALT_GENERATOR_PROVIDER`: `'wagtailaltgenerator.providers.cognitive.Cognitive'`
-- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Service API key
+- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Services API key
 
 
 ### AWS Rekognition
@@ -117,7 +117,7 @@ You also need to define the provider:
 
 ### Google Vision
 
-Googles Cloud Vision Api [docs](https://cloud.google.com/vision/).
+Google's Cloud Vision API [docs](https://cloud.google.com/vision/).
 
 - (+) Stable
 - (-) Support only tags
