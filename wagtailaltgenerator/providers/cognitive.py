@@ -4,11 +4,12 @@ import logging
 from django.conf import settings
 import requests
 
+from wagtailaltgenerator import app_settings
 from wagtailaltgenerator.providers import (
     AbstractProvider,
     DescriptionResult,
 )
-from wagtailaltgenerator import app_settings
+from wagtailaltgenerator.utils import get_image_data
 
 
 API_URL = 'https://api.projectoxford.ai'
@@ -16,7 +17,7 @@ API_URL = 'https://api.projectoxford.ai'
 logger = logging.getLogger(__name__)
 
 
-def describe(image_url):
+def describe_by_url(image_url):
     headers = {
         'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': settings.COMPUTER_VISION_API_KEY,
@@ -38,11 +39,34 @@ def describe(image_url):
     return response.json()
 
 
+def describe_by_data(image_url):
+    headers = {
+        'Content-Type': 'application/octet-stream',
+        'Ocp-Apim-Subscription-Key': settings.COMPUTER_VISION_API_KEY,
+    }
+
+    image_data = get_image_data(image_url)
+
+    response = requests.post('{}{}'.format(API_URL, '/vision/v1.0/describe'),
+                             data=image_data,
+                             headers=headers,
+                             )
+
+    if response.status_code != 200:
+        logging.warn(response)
+        return None
+
+    return response.json()
+
+
 class Cognitive(AbstractProvider):
     def describe(self, image):
         image_url = image.file.url
 
-        data = describe(image_url)
+        if app_settings.ALT_GENERATOR_PREFER_UPLOAD:
+            data = describe_by_data(image_url)
+        else:
+            data = describe_by_url(image_url)
 
         description = None
         tags = []

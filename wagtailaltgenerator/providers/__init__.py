@@ -1,7 +1,5 @@
 import importlib
 
-import requests
-
 from wagtailaltgenerator import app_settings
 
 
@@ -18,18 +16,6 @@ def get_provider(path):
 class AbstractProvider(object):
     def describe(image):
         pass
-
-    def get_image_data(self, image):
-        '''
-        Load external image and return byte data
-        '''
-        image_url = image.file.url
-        image_data = requests.get(image_url)
-
-        if image_data.status_code > 200 and image_data.status_code < 300:
-            return None
-
-        return image_data.content
 
 
 class DescriptionResult(object):
