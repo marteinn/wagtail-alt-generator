@@ -9,3 +9,5 @@ ALT_GENERATOR_PROVIDER = getattr(settings,
                                  'ALT_GENERATOR_PROVIDER', DEFAULT_PROVIDER)
 ALT_GENERATOR_MIN_CONFIDENCE = getattr(settings,
                                        'ALT_GENERATOR_MIN_CONFIDENCE', 50)
+ALT_GENERATOR_PREFER_UPLOAD = getattr(settings, 'ALT_GENERATOR_PREFER_UPLOAD',
+                                      True)

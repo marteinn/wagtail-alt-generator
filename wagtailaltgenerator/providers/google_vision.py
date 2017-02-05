@@ -4,11 +4,12 @@ import base64
 from googleapiclient import discovery
 from oauth2client.client import GoogleCredentials
 
+from wagtailaltgenerator import app_settings
 from wagtailaltgenerator.providers import (
     AbstractProvider,
     DescriptionResult
 )
-from wagtailaltgenerator import app_settings
+from wagtailaltgenerator.utils import get_image_data
 
 
 class GoogleVision(AbstractProvider):
@@ -19,7 +20,7 @@ class GoogleVision(AbstractProvider):
 
     def describe(self, image):
         image_url = image.file.url
-        image_data = self.get_image_data(image)
+        image_data = get_image_data(image_url)
 
         description = None
         tags = []

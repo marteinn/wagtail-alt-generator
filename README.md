@@ -23,8 +23,6 @@ Insert image description and tags with the help of computer vision (inspired by 
 - Wagtail 1.7+
 - Access to any of the [supported providers](#providers)
 
-- NOTE: Images must be accessible to third parties (to enable computer vision processing). That means any image that can be reached through, for instance yourdomain.com/yourimage.jpg will work, while localhost images won't.
-
 
 ## Installation
 
@@ -70,6 +68,7 @@ Depending on your selected provider, you might also need extra requirements (exa
 - `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (unlimited by default)
 - `ALT_GENERATOR_PROVIDER`: The provider you would like to use (Cognitive Services is default)
 - `ALT_GENERATOR_MIN_CONFIDENCE`: The minimum accepted percentage of confidence the provider has in describing the image (default 0 = accept any).
+- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default True, alaways try to post image). Only Cognitive Services supports this.
 
 
 ## Providers
