@@ -19,5 +19,5 @@ def get_local_image_data(image_file):
     Retrive byte data from a local file
     '''
     abs_path = os.path.abspath(image_file.path)
-    image_data = open(abs_path).read()
+    image_data = open(abs_path, 'rb').read()
     return image_data
