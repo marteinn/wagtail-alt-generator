@@ -8,8 +8,8 @@ Insert image description and tags with the help of computer vision
 """
 
 __title__ = "wagtailaltgenerator"
-__version__ = '3.1.0'
-__build__ = 310
+__version__ = '3.1.1'
+__build__ = 311
 __author__ = "Martin Sandström"
 __license__ = "MIT"
 __copyright__ = "Copyright 2016 Martin Sandström"
