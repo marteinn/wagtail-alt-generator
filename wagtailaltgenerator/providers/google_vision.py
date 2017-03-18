@@ -9,7 +9,10 @@ from wagtailaltgenerator.providers import (
     AbstractProvider,
     DescriptionResult
 )
-from wagtailaltgenerator.utils import get_image_data
+from wagtailaltgenerator.utils import (
+    get_image_data,
+    get_local_image_data,
+)
 
 
 class GoogleVision(AbstractProvider):
@@ -19,8 +22,10 @@ class GoogleVision(AbstractProvider):
         super(GoogleVision, self).__init__(*args, **kwargs)
 
     def describe(self, image):
-        image_url = image.file.url
-        image_data = get_image_data(image_url)
+        if not image.is_stored_locally():
+            image_data = get_image_data(image.file.url)
+        else:
+            image_data = get_local_image_data(image.file)
 
         description = None
         tags = []
@@ -51,7 +56,7 @@ class GoogleVision(AbstractProvider):
             response = service_request.execute()
             labels = response['responses'][0]['labelAnnotations']
             tags = [label['description'] for label in labels
-                        if label['score'] >= min_confidence]
+                    if label['score'] >= min_confidence]
 
         return DescriptionResult(
             description=description,

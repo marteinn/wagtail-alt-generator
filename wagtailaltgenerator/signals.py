@@ -5,7 +5,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.conf import settings
 
 try:
     from wagtail.wagtailimages import get_image_model
@@ -28,7 +27,7 @@ def apply_image_alt(sender, instance, **kwargs):
 
     result = provider.describe(instance)
 
-    if image_url.endswith(instance.title):
+    if image_url[-4:] == instance.title[-4:]:
         _apply_title(instance, result)
 
     if app_settings.ALT_GENERATOR_USE_TAGS:

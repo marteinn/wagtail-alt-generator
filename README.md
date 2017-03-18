@@ -2,7 +2,7 @@
 
 # Wagtail Alt Generator
 
-Insert image description and tags with the help of computer vision (inspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
+Generate image description and tags with the help of computer vision (inspired by [altify](https://github.com/ParhamP/altify/blob/master/altify/altify)).
 
 [![Screen1](https://raw.githubusercontent.com/marteinn/wagtail-alt-generator/develop/img/screenshot.png)](https://www.youtube.com/watch?v=1JeCjKx0lko)
 
@@ -11,15 +11,14 @@ Insert image description and tags with the help of computer vision (inspired by 
 
 ## Supported providers
 
-- [Microsoft Cognitive Service](#microsoft-cognitive-services)
+- [Microsoft Cognitive Services](#microsoft-cognitive-services)
 - [AWS Rekognition](#aws-rekognition)
 - [Google Vision](#google-vision)
 
 
 ## Requirements
 
-- Python 2.7 / Python 3.5+
-- Django 1.8+
+- Python 2.7+ / Python 3.5+
 - Wagtail 1.7+
 - Access to any of the [supported providers](#providers)
 
@@ -64,18 +63,18 @@ Depending on your selected provider, you might also need extra requirements (exa
 
 ## General settings
 
-- `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (True by default)
-- `ALT_GENERATOR_MAX_TAGS`: The total amount of tags to use (unlimited by default)
-- `ALT_GENERATOR_PROVIDER`: The provider you would like to use (Cognitive Services is default)
-- `ALT_GENERATOR_MIN_CONFIDENCE`: The minimum accepted percentage of confidence the provider has in describing the image (default 0 = accept any).
-- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default True, alaways try to post image). Only Cognitive Services supports this.
+- `ALT_GENERATOR_USE_TAGS`: Enable/disable image tags (`True` by default)
+- `ALT_GENERATOR_MAX_TAGS`: The maximum amount of tags to use from service (default `-1`, unlimited)
+- `ALT_GENERATOR_PROVIDER`: The provider you would like to use (`wagtailaltgenerator.providers.cognitive.Cognitive` is default)
+- `ALT_GENERATOR_MIN_CONFIDENCE`: The minimum accepted percentage of confidence the provider has in describing the image (default `0`, accept any).
+- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default `True`, always try to post image). Only Cognitive Services supports both choices this.
 
 
 ## Providers
 
 ### Microsoft Cognitive Services
 
-Microsofts computer vision API. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
+Microsoft's computer vision API. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
 
 - (+) Supports both tags and descriptions
 - (-) Service still in preview
@@ -84,7 +83,7 @@ Microsofts computer vision API. [Docs](https://microsoft.com/cognitive-services/
 #### Settings
 
 - `ALT_GENERATOR_PROVIDER`: `'wagtailaltgenerator.providers.cognitive.Cognitive'`
-- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Service API key
+- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Services API key
 
 
 ### AWS Rekognition
@@ -108,7 +107,7 @@ These are three of the most common settings:
 
 - `AWS_ACCESS_KEY_ID`: The access key for your AWS account
 - `AWS_SECRET_ACCESS_KEY`: The secret key for your AWS account
-- `AWS_DEFAULT_REGION`: The default region to use, e.g. us-west-2, us-west-2, etc
+- `AWS_DEFAULT_REGION`: The default region to use, e.g. us-west-2, eu-west-1, etc
 
 You also need to define the provider:
 
@@ -117,7 +116,7 @@ You also need to define the provider:
 
 ### Google Vision
 
-Googles Cloud Vision Api [docs](https://cloud.google.com/vision/).
+Google's Cloud Vision API [docs](https://cloud.google.com/vision/).
 
 - (+) Stable
 - (-) Support only tags
