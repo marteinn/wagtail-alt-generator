@@ -25,3 +25,7 @@ class MockedUrlImageFile(object):
     @property
     def url(self):
         return self.image_url
+
+    @property
+    def path(self):
+        raise NotImplementedError
