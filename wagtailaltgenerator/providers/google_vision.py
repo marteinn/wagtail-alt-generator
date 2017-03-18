@@ -25,7 +25,7 @@ class GoogleVision(AbstractProvider):
         if not image.is_stored_locally():
             image_data = get_image_data(image.file.url)
         else:
-            image_data = get_local_image_dataimage.file)
+            image_data = get_local_image_data(image.file)
 
         description = None
         tags = []
@@ -56,7 +56,7 @@ class GoogleVision(AbstractProvider):
             response = service_request.execute()
             labels = response['responses'][0]['labelAnnotations']
             tags = [label['description'] for label in labels
-                        if label['score'] >= min_confidence]
+                    if label['score'] >= min_confidence]
 
         return DescriptionResult(
             description=description,
