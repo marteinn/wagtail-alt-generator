@@ -6,6 +6,7 @@ from wagtailaltgenerator.providers.cognitive import (
     describe_by_url,
     describe_by_data,
 )
+from wagtailaltgenerator.utils import get_image_data
 
 from tests.factories import MockedUrlImageFile, ImageFactory
 
@@ -25,7 +26,8 @@ class CognitiveServiceTest(TestCase):
 
     def test_api_describe_by_data(self):
         image_url = test_image
-        data = describe_by_data(image_url)
+        image_data = get_image_data(image_url)
+        data = describe_by_data(image_data)
 
         self.assertTrue('description' in data)
         self.assertTrue('captions' in data['description'])

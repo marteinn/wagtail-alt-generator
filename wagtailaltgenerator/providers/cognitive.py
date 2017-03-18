@@ -9,7 +9,10 @@ from wagtailaltgenerator.providers import (
     AbstractProvider,
     DescriptionResult,
 )
-from wagtailaltgenerator.utils import get_image_data
+from wagtailaltgenerator.utils import (
+    get_image_data,
+    get_local_image_data,
+)
 
 
 API_URL = 'https://api.projectoxford.ai'
@@ -39,13 +42,11 @@ def describe_by_url(image_url):
     return response.json()
 
 
-def describe_by_data(image_url):
+def describe_by_data(image_data):
     headers = {
         'Content-Type': 'application/octet-stream',
         'Ocp-Apim-Subscription-Key': settings.COMPUTER_VISION_API_KEY,
     }
-
-    image_data = get_image_data(image_url)
 
     response = requests.post('{}{}'.format(API_URL, '/vision/v1.0/describe'),
                              data=image_data,
@@ -61,12 +62,15 @@ def describe_by_data(image_url):
 
 class Cognitive(AbstractProvider):
     def describe(self, image):
-        image_url = image.file.url
-
         if app_settings.ALT_GENERATOR_PREFER_UPLOAD:
-            data = describe_by_data(image_url)
+            if not image.is_stored_locally():
+                image_data = get_image_data(image.file.url)
+                data = describe_by_data(image_data)
+            else:
+                image_data = get_local_image_data(image.file)
+                data = describe_by_data(image_data)
         else:
-            data = describe_by_url(image_url)
+            data = describe_by_url(image.file.url)
 
         description = None
         tags = []

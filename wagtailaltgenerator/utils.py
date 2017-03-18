@@ -14,7 +14,7 @@ def get_image_data(image_url):
     return image_data.content
 
 
-def get_local_file_data(image_file):
+def get_local_image_data(image_file):
     '''
     Retrive byte data from a local file
     '''
