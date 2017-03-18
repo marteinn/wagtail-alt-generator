@@ -1,4 +1,5 @@
 import requests
+import os
 
 
 def get_image_data(image_url):
@@ -11,3 +12,12 @@ def get_image_data(image_url):
         return None
 
     return image_data.content
+
+
+def get_local_file_data(image_file):
+    '''
+    Retrive byte data from a local file
+    '''
+    abs_path = os.path.abspath(image_file.path)
+    image_data = open(abs_path).read()
+    return image_data
