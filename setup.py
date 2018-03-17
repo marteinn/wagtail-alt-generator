@@ -37,12 +37,12 @@ with open('wagtailaltgenerator/__init__.py', 'r') as fd:
 setup(
     name="wagtailaltgenerator",
     version=version,
-    description=("Autogenerate image descriptions with the help of computer vision"),  # NOQA
+    description=("Insert image description and tags with the help of computer vision"),  # NOQA
     long_description=long_description,
     author="marteinn",
     author_email="martin@marteinn.se",
     url="https://github.com/marteinn/wagtail-alt-generator",
-    packages=find_packages(exclude=('tests*',)),
+    packages=find_packages(exclude=('tests*', 'example*')),
     include_package_data=True,
     install_requires=install_requires,
     extras_require={
@@ -52,15 +52,13 @@ setup(
     license="MIT",
     zip_safe=False,
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         'Environment :: Web Environment',
         "Intended Audience :: Developers",
         "Natural Language :: English",
         'Intended Audience :: Developers',
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python",
-        'Programming Language :: Python :: 2',
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",

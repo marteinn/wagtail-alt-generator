@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from wagtail.wagtailimages.models import Image
+from wagtail.images.models import Image
 
 from wagtailaltgenerator.providers import get_provider
 from wagtailaltgenerator.providers.google_vision import GoogleVision

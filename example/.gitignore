@@ -1,0 +1,10 @@
+# Docker config
+web.env
+
+# Django
+media
+static
+
+# Test package
+wagtailaltgenerator
+
