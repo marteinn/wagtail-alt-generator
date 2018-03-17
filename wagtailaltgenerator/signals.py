@@ -5,11 +5,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
-try:
-    from wagtail.wagtailimages import get_image_model
-except ImportError:
-    from wagtail.wagtailimages.models import get_image_model
+from wagtail.wagtailimages import get_image_model
 
 from wagtailaltgenerator.providers import get_current_provider
 from wagtailaltgenerator import app_settings
