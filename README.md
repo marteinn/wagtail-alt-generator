@@ -18,8 +18,8 @@ Generate image description and tags with the help of computer vision (inspired b
 
 ## Requirements
 
-- Python 2.7+ / Python 3.5+
-- Wagtail 1.7+
+- Python 3.5+
+- Wagtail 2+
 - Access to any of the [supported providers](#providers)
 
 
