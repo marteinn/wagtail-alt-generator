@@ -15,7 +15,7 @@ from wagtailaltgenerator.utils import (
 )
 
 
-API_URL = 'https://api.projectoxford.ai'
+API_URL = 'https://westcentralus.api.cognitive.microsoft.com'
 
 logger = logging.getLogger(__name__)
 
