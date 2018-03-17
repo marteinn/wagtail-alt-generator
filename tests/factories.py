@@ -1,8 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
 import factory
-from wagtail.wagtailimages.tests.utils import get_test_image_file
-from wagtail.wagtailimages.models import Image
+from wagtail.images.tests.utils import get_test_image_file
+from wagtail.images.models import Image
 from django.db.models import signals
 
 
