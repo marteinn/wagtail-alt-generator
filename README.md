@@ -77,7 +77,6 @@ Depending on your selected provider, you might also need extra requirements (exa
 Microsoft's computer vision API. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
 
 - (+) Supports both tags and descriptions
-- (-) Service still in preview
 - (-) Requires monthly API key rotation
 
 #### Settings
@@ -157,9 +156,9 @@ You can also run separate test cases: `runtests.py tests.test_cognitive_service.
 These hooks will automatically bump the application version when using `git flow release ...`
 
 ```bash
-chmod +x $PWD/git-hooks/release-start.sh
-ln -nfs $PWD/git-hooks/release-start.sh .git/hooks/post-flow-release-start
-ln -nfs $PWD/git-hooks/release-start.sh .git/hooks/post-flow-hotfix-start
+chmod +x $PWD/git-hooks/bump-version.sh
+ln -nfs $PWD/git-hooks/bump-version.sh .git/hooks/post-flow-release-start
+ln -nfs $PWD/git-hooks/bump-version.sh .git/hooks/post-flow-hotfix-start
 ```
 
 
