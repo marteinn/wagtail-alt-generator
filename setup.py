@@ -4,9 +4,7 @@
 import os
 import sys
 import re
-import pip
 from setuptools import setup, find_packages
-from pip.req import parse_requirements
 
 
 if sys.argv[-1] == "publish":
@@ -16,11 +14,6 @@ if sys.argv[-1] == "publish":
 
 with open('README.md') as f:
     readme = f.read()
-
-# Handle requirements
-requires = parse_requirements("requirements/install.txt",
-                              session=pip.download.PipSession())
-install_requires = [str(ir.req) for ir in requires]
 
 # Convert markdown to rst
 try:
@@ -44,7 +37,10 @@ setup(
     url="https://github.com/marteinn/wagtail-alt-generator",
     packages=find_packages(exclude=('tests*', 'example*')),
     include_package_data=True,
-    install_requires=install_requires,
+    install_requires=[
+        'requests',
+        'wagtail>=1.7',
+    ],
     extras_require={
         'rekognition': ['boto3>=1.4,<1.5'],
         'google_vision': ['google-api-python-client>=1.5.5'],
