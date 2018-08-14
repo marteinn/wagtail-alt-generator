@@ -6,11 +6,11 @@ import sys
 import re
 import pip
 from setuptools import setup, find_packages
-try: # for pip >= 10
-    from pip._internal.req import parse_requirements
-except ImportError: # for pip <= 9.0.3
-    from pip.req import parse_requirements
-
+    
+def parse_requirements(filename):
+    """ load requirements from a pip requirements file """
+    lineiter = (line.strip() for line in open(filename))
+    return [line for line in lineiter if line and not line.startswith("#")]
 
 if sys.argv[-1] == "publish":
     os.system("python setup.py sdist upload")
@@ -21,9 +21,7 @@ with open('README.md') as f:
     readme = f.read()
 
 # Handle requirements
-requires = parse_requirements("requirements/install.txt",
-                              session=pip.download.PipSession())
-install_requires = [str(ir.req) for ir in requires]
+install_requires = parse_requirements("requirements/install.txt")
 
 # Convert markdown to rst
 try:
