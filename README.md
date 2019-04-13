@@ -67,7 +67,7 @@ Depending on your selected provider, you might also need extra requirements (exa
 - `ALT_GENERATOR_MAX_TAGS`: The maximum amount of tags to use from service (default `-1`, unlimited)
 - `ALT_GENERATOR_PROVIDER`: The provider you would like to use (`wagtailaltgenerator.providers.cognitive.Cognitive` is default)
 - `ALT_GENERATOR_MIN_CONFIDENCE`: The minimum accepted percentage of confidence the provider has in describing the image (default `0`, accept any).
-- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default `True`, always try to post image). Only Cognitive Services supports both choices this.
+- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default `True`, always try to post image). Only Cognitive Services supports this.
 
 
 ## Providers
