@@ -19,7 +19,7 @@ with open('README.md') as f:
 try:
     from pypandoc import convert
     long_description = convert("README.md", "rst")
-except:
+except:  # NOQA
     long_description = ""
 
 version = ''
@@ -39,7 +39,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'requests',
-        'wagtail>=1.7',
+        'wagtail>=1.12',
     ],
     extras_require={
         'rekognition': ['boto3>=1.4,<1.5'],
