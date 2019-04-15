@@ -15,8 +15,6 @@ from __future__ import absolute_import, unicode_literals
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-import wagtail
-
 from . import get_env
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -57,6 +55,7 @@ INSTALLED_APPS = WAGTAIL_APPS + [
 
     'home',
     'search',
+    'examplesite',
     'wagtailaltgenerator',
 ]
 
@@ -149,7 +148,7 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "examplesite"
 
-# Base URL to use when referring to full URLs within the Wagtail admin backend -
+# Base URL to use when referring to full URLs within the Wagtail admin backend
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
 
@@ -158,4 +157,5 @@ AWS_ACCESS_KEY_ID = get_env("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = get_env("AWS_ACCESS_KEY_ID")
 AWS_DEFAULT_REGION = get_env("AWS_DEFAULT_REGION")
 COMPUTER_VISION_API_KEY = get_env("COMPUTER_VISION_API_KEY")
+COMPUTER_VISION_REGION = get_env("COMPUTER_VISION_REGION")
 GOOGLE_APPLICATION_CREDENTIALS = get_env("GOOGLE_APPLICATION_CREDENTIALS")
