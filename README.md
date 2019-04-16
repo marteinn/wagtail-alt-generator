@@ -1,4 +1,5 @@
 [![PyPI version](https://badge.fury.io/py/wagtailaltgenerator.svg)](https://badge.fury.io/py/wagtailaltgenerator)
+[![Build Status](https://travis-ci.org/marteinn/wagtail-alt-generator.svg?branch=develop)](https://travis-ci.org/marteinn/wagtail-alt-generator)
 
 # Wagtail Alt Generator
 
