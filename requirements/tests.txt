@@ -1,5 +1,5 @@
 # Extend base.txt
--r base.txt
+-r install.txt
 
 factory-boy
 wagtail_factories
