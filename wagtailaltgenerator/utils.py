@@ -30,17 +30,19 @@ def get_local_image_data(image_file):
 
 def translate_description_result(result):
     provider = get_current_provider()()
-    to_lang = get_language()
+
+    lang_and_country_code = get_language()
+    lang_code = lang_and_country_code.split("-")[0]
 
     strings = []
     if result.description:
         strings = [result.description]
 
     if result.tags:
-        strings = [*strings, result.tags]
+        strings = [*strings, *result.tags]
 
     translated_strings = provider.translate(
-        strings, target_language=to_lang
+        strings, target_language=lang_code
     )
 
     translated_description = (
