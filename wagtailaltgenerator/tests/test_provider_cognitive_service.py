@@ -1,3 +1,5 @@
+from unittest import skip
+
 from django.test import TestCase
 
 from wagtailaltgenerator import app_settings
@@ -7,14 +9,17 @@ from wagtailaltgenerator.providers.cognitive import (
     describe_by_data,
 )
 from wagtailaltgenerator.utils import get_image_data
-
-from tests.factories import MockedUrlImageFile, ImageFactory
+from wagtailaltgenerator.tests.factories import (
+    MockedUrlImageFile,
+    ImageFactory,
+)
 
 
 test_image = 'https://oxfordportal.blob.core.windows.net/vision/Analysis/3.jpg'
 
 
-class CognitiveServiceTest(TestCase):
+class ProviderCognitiveServiceTest(TestCase):
+    @skip("External test")
     def test_api_describe_by_url(self):
         image_url = test_image
         data = describe_by_url(image_url)
@@ -24,6 +29,7 @@ class CognitiveServiceTest(TestCase):
         self.assertTrue(len(data['description']['captions']) > 0)
         self.assertTrue('text' in data['description']['captions'][0])
 
+    @skip("External test")
     def test_api_describe_by_data(self):
         image_url = test_image
         image_data = get_image_data(image_url)
@@ -34,6 +40,7 @@ class CognitiveServiceTest(TestCase):
         self.assertTrue(len(data['description']['captions']) > 0)
         self.assertTrue('text' in data['description']['captions'][0])
 
+    @skip("External test")
     def test_provider_describe_by_url(self):
         app_settings.ALT_GENERATOR_PREFER_UPLOAD = False
 
@@ -51,6 +58,7 @@ class CognitiveServiceTest(TestCase):
 
         app_settings.ALT_GENERATOR_PREFER_UPLOAD = True
 
+    @skip("External test")
     def test_provider_describe_by_data(self):
         image = ImageFactory()
         image.file = MockedUrlImageFile(image_url=test_image)
