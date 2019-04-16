@@ -1,3 +1,4 @@
-requests
-wagtail>=1.7
+# Extend base.txt
+-r base.txt
+
 factory-boy
