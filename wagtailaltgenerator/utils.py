@@ -1,6 +1,11 @@
 import requests
 import os
 
+from django.utils.translation import get_language
+
+from wagtailaltgenerator.translation_providers import get_current_provider
+from wagtailaltgenerator.providers import DescriptionResult
+
 
 def get_image_data(image_url):
     '''
@@ -21,3 +26,32 @@ def get_local_image_data(image_file):
     abs_path = os.path.abspath(image_file.path)
     image_data = open(abs_path, 'rb').read()
     return image_data
+
+
+def translate_description_result(result):
+    provider = get_current_provider()()
+    to_lang = get_language()
+
+    strings = []
+    if result.description:
+        strings = [result.description]
+
+    if result.tags:
+        strings = [*strings, result.tags]
+
+    translated_strings = provider.translate(
+        strings, target_language=to_lang
+    )
+
+    translated_description = (
+        translated_strings[0] if result.description else result.description
+    )
+
+    translated_tags = (
+        translated_strings[1:] if result.description else translated_strings
+    )
+
+    return DescriptionResult(
+        description=translated_description,
+        tags=translated_tags,
+    )

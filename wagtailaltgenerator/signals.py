@@ -8,7 +8,10 @@ from django.dispatch import receiver
 from wagtail.images import get_image_model
 
 from wagtailaltgenerator.providers import get_current_provider
+from wagtailaltgenerator.utils import translate_description_result
 from wagtailaltgenerator import app_settings
+from wagtailaltgenerator.app_settings import get_setting
+
 
 image_cls = get_image_model()
 
@@ -22,6 +25,9 @@ def apply_image_alt(sender, instance, **kwargs):
     image_url = instance.file.url
 
     result = provider.describe(instance)
+
+    if get_setting("ALT_GENERATOR_TRANSLATE_TO_LOCAL_LANG"):
+        result = translate_description_result(result)
 
     if image_url[-4:] == instance.title[-4:]:
         _apply_title(instance, result)
