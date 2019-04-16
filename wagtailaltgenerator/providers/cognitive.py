@@ -15,7 +15,7 @@ from wagtailaltgenerator.utils import (
 )
 
 
-API_URL = 'https://westcentralus.api.cognitive.microsoft.com'
+API_URL = 'https://{}.api.cognitive.microsoft.com'
 
 logger = logging.getLogger(__name__)
 
@@ -30,13 +30,15 @@ def describe_by_url(image_url):
         "url": image_url,
     }
 
-    response = requests.post('{}{}'.format(API_URL, '/vision/v1.0/describe'),
-                             headers=headers,
-                             json=json_data
-                             )
+    endpoint = API_URL.format(settings.COMPUTER_VISION_REGION)
+    response = requests.post(
+        '{}{}'.format(endpoint, '/vision/v1.0/describe'),
+        headers=headers,
+        json=json_data,
+    )
 
     if response.status_code != 200:
-        logging.warn(response)
+        logging.warn([response, response.data])
         return None
 
     return response.json()
@@ -48,16 +50,19 @@ def describe_by_data(image_data):
         'Ocp-Apim-Subscription-Key': settings.COMPUTER_VISION_API_KEY,
     }
 
-    response = requests.post('{}{}'.format(API_URL, '/vision/v1.0/describe'),
-                             data=image_data,
-                             headers=headers,
-                             )
+    endpoint = API_URL.format(settings.COMPUTER_VISION_REGION)
+    response = requests.post(
+        '{}{}'.format(endpoint, '/vision/v1.0/describe'),
+        data=image_data,
+        headers=headers,
+    )
 
     if response.status_code != 200:
-        logging.warn(response)
+        logging.warn([response, response.data])
         return None
 
-    return response.json()
+    data = response.json()
+    return data
 
 
 class Cognitive(AbstractProvider):
@@ -93,7 +98,7 @@ class Cognitive(AbstractProvider):
 
         try:
             tags = data['description']['tags']
-        except:
+        except:  # NOQA
             pass
 
         return DescriptionResult(

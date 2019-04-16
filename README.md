@@ -11,7 +11,7 @@ Generate image description and tags with the help of computer vision (inspired b
 
 ## Supported providers
 
-- [Microsoft Cognitive Services](#microsoft-cognitive-services)
+- [Azure Cognitive Services](#azure-cognitive-services)
 - [AWS Rekognition](#aws-rekognition)
 - [Google Vision](#google-vision)
 
@@ -34,17 +34,19 @@ $ pip install wagtailaltgenerator
 Depending on your selected provider, you might also need extra requirements (example `pip install wagtailaltgenerator[rekognition]`. Please check the install instructions for the various providers below.
 
 
-## Quick Setup (on Microsoft Cognitive Service)
+## Quick Setup (on Azure Cognitive Service)
 
 1. Install `pip install wagtailaltgenerator`
-2. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/)
-3. Retrieve API key for the product `Computer Vision - Preview`
-4. Add the key to your django settings:
+2. Register an account on [Azure Cognitive Service](https://www.microsoft.com/cognitive-services/)
+3. Create a new resource for `Computer Vision`
+4. Retrive your api key and your selected region
+5. Add the key and region to your django settings:
 
     ```
     COMPUTER_VISION_API_KEY = 'yourkey'
+    COMPUTER_VISION_REGION = 'your-region' (example northeurope)
     ```
-5. Make sure `wagtailaltgenerator` is added to your `INSTALLED_APPS`.
+6. Make sure `wagtailaltgenerator` is added to your `INSTALLED_APPS`.
 
     ```python
     INSTALLED_APPS = (
@@ -67,22 +69,22 @@ Depending on your selected provider, you might also need extra requirements (exa
 - `ALT_GENERATOR_MAX_TAGS`: The maximum amount of tags to use from service (default `-1`, unlimited)
 - `ALT_GENERATOR_PROVIDER`: The provider you would like to use (`wagtailaltgenerator.providers.cognitive.Cognitive` is default)
 - `ALT_GENERATOR_MIN_CONFIDENCE`: The minimum accepted percentage of confidence the provider has in describing the image (default `0`, accept any).
-- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default `True`, always try to post image). Only Cognitive Services supports this.
+- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default `True`, always try to post image). Only Azure Cognitive Services supports this.
 
 
 ## Providers
 
-### Microsoft Cognitive Services
+### Azure Cognitive Services
 
-Microsoft's computer vision API. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
+Azure's computer vision API. [Docs](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/)
 
 - (+) Supports both tags and descriptions
-- (-) Requires monthly API key rotation
 
 #### Settings
 
 - `ALT_GENERATOR_PROVIDER`: `'wagtailaltgenerator.providers.cognitive.Cognitive'`
-- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Services API key
+- `COMPUTER_VISION_API_KEY`: Azure Computer Vision API key
+- `COMPUTER_VISION_REGION`: The default region to use, e.g. westus, northeurope, etc
 
 
 ### AWS Rekognition
