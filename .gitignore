@@ -47,6 +47,9 @@ venv*
 /tmp
 /temp
 /original_images
+/example/original_images
+/example/*.json
+
 
 # Testing
 test_vars.sh
