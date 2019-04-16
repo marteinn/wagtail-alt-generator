@@ -1,4 +1,5 @@
 [![PyPI version](https://badge.fury.io/py/wagtailaltgenerator.svg)](https://badge.fury.io/py/wagtailaltgenerator)
+[![Build Status](https://travis-ci.org/marteinn/wagtail-alt-generator.svg?branch=develop)](https://travis-ci.org/marteinn/wagtail-alt-generator)
 
 # Wagtail Alt Generator
 
@@ -11,9 +12,14 @@ Generate image description and tags with the help of computer vision (inspired b
 
 ## Supported providers
 
-- [Microsoft Cognitive Services](#microsoft-cognitive-services)
+- [Azure Cognitive Services](#azure-cognitive-services)
 - [AWS Rekognition](#aws-rekognition)
 - [Google Vision](#google-vision)
+
+
+## Translation providers
+
+- [Google Translate](#google-translate)
 
 
 ## Requirements
@@ -34,17 +40,19 @@ $ pip install wagtailaltgenerator
 Depending on your selected provider, you might also need extra requirements (example `pip install wagtailaltgenerator[rekognition]`. Please check the install instructions for the various providers below.
 
 
-## Quick Setup (on Microsoft Cognitive Service)
+## Quick Setup (on Azure Cognitive Service)
 
 1. Install `pip install wagtailaltgenerator`
-2. Register an account on [Microsoft Cognitive Service](https://www.microsoft.com/cognitive-services/)
-3. Retrieve API key for the product `Computer Vision - Preview`
-4. Add the key to your django settings:
+2. Register an account on [Azure Cognitive Service](https://www.microsoft.com/cognitive-services/)
+3. Create a new resource for `Computer Vision`
+4. Retrive your api key and your selected region
+5. Add the key and region to your django settings:
 
     ```
     COMPUTER_VISION_API_KEY = 'yourkey'
+    COMPUTER_VISION_REGION = 'your-region' (example northeurope)
     ```
-5. Make sure `wagtailaltgenerator` is added to your `INSTALLED_APPS`.
+6. Make sure `wagtailaltgenerator` is added to your `INSTALLED_APPS`.
 
     ```python
     INSTALLED_APPS = (
@@ -67,22 +75,24 @@ Depending on your selected provider, you might also need extra requirements (exa
 - `ALT_GENERATOR_MAX_TAGS`: The maximum amount of tags to use from service (default `-1`, unlimited)
 - `ALT_GENERATOR_PROVIDER`: The provider you would like to use (`wagtailaltgenerator.providers.cognitive.Cognitive` is default)
 - `ALT_GENERATOR_MIN_CONFIDENCE`: The minimum accepted percentage of confidence the provider has in describing the image (default `0`, accept any).
-- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default `True`, always try to post image). Only Cognitive Services supports both choices this.
+- `ALT_GENERATOR_PREFER_UPLOAD`: If you want your provider to read asset by url, or through binary upload (default `True`, always try to post image). Only Azure Cognitive Services supports this.
+- `ALT_GENERATOR_TRANSLATE_TO_LOCAL_LANG`: If you want to translate the generated text to your local language (default `False`)
+- `ALT_GENERATOR_TRANSLATION_PROVIDER`: The language provider you would like to use (`wagtailaltgenerator.translation_providers.google_translate.GoogleTranslate` is default)
 
 
 ## Providers
 
-### Microsoft Cognitive Services
+### Azure Cognitive Services
 
-Microsoft's computer vision API. [Docs](https://microsoft.com/cognitive-services/en-us/computer-vision-api)
+Azure's computer vision API. [Docs](https://azure.microsoft.com/en-us/services/cognitive-services/computer-vision/)
 
 - (+) Supports both tags and descriptions
-- (-) Requires monthly API key rotation
 
 #### Settings
 
 - `ALT_GENERATOR_PROVIDER`: `'wagtailaltgenerator.providers.cognitive.Cognitive'`
-- `COMPUTER_VISION_API_KEY`: Microsoft Cognitive Services API key
+- `COMPUTER_VISION_API_KEY`: Azure Computer Vision API key
+- `COMPUTER_VISION_REGION`: The default region to use, e.g. westus, northeurope, etc
 
 
 ### AWS Rekognition
@@ -133,6 +143,29 @@ You can authenticate locally with the [Google Cloud SDK](https://cloud.google.co
 You also need to define the provider:
 
 - `ALT_GENERATOR_PROVIDER`: `'wagtailaltgenerator.providers.google_vision.GoogleVision'`
+
+
+## Translation providers
+
+The generated descriptions are returned as english, so we need to use separate translation providers to translate them to your websites local language.
+
+### Google Translate
+
+Google's Cloud Translation Api [docs](https://cloud.google.com/translate/docs/).
+
+#### Installing
+
+- `pip install wagtailaltgenerator[google_translate]`
+
+#### Settings
+
+The Google Cloud Translation Api uses `google-cloud-translate` and are typically authenticated using [Application Default Credentials](https://cloud.google.com/docs/authentication#getting_credentials_for_server-centric_flow) for authentication.
+
+You can authenticate locally with the [Google Cloud SDK](https://cloud.google.com/sdk/), on production with either the built in credentials (if you already run on Google Cloud) or with a [Service Account key file](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#creatinganaccount).
+
+You also need to activate translation
+
+- `ALT_GENERATOR_TRANSLATE_TO_LOCAL_LANG`: `True`
 
 
 ## Tests

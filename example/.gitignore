@@ -3,7 +3,8 @@ web.env
 
 # Django
 media
-static
+static/*
+!static/.gitkeep
 
 # Test package
 wagtailaltgenerator

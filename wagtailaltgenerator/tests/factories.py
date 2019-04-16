@@ -8,7 +8,7 @@ from django.db.models import signals
 
 @factory.django.mute_signals(signals.post_save)
 class ImageFactory(factory.DjangoModelFactory):
-    title = factory.sequence(lambda x: 'image-{0}'.format([x]))
+    title = factory.sequence(lambda x: "image-{0}".format([x]))
     file = factory.LazyAttribute(lambda x: get_test_image_file())
 
     class Meta:
@@ -20,7 +20,7 @@ class MockedUrlImageFile(object):
     height = 0
 
     def __init__(self, *args, **kwargs):
-        self.image_url = kwargs.pop('image_url')
+        self.image_url = kwargs.pop("image_url")
 
     @property
     def url(self):

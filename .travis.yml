@@ -1,0 +1,14 @@
+language: python
+
+env:
+ - WAGTAIL_VERSION=2.4
+
+python:
+  - "3.5"
+  - "3.6"
+
+install:
+ - pip install -r requirements/tests.txt
+
+script:
+ - python runtests.py

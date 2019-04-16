@@ -9,7 +9,7 @@ def get_current_provider():
 
 
 def get_provider(path):
-    module_name, class_name = path.rsplit('.', 1)
+    module_name, class_name = path.rsplit(".", 1)
     return getattr(importlib.import_module(module_name), class_name)
 
 

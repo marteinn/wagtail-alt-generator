@@ -1,3 +1,12 @@
-Django==2.0.3
-wagtail==2.0
+wagtail==2.4
 psycopg2-binary==2.7.4
+wagtail-factories
+
+# Rekognition
+boto3>=1.4,<1.5
+
+# Google Vision
+google-api-python-client>=1.5.5
+
+# Google translate
+google-cloud-translate
