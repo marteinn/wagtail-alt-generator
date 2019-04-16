@@ -7,13 +7,11 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 class ImagePage(Page):
     main_image = models.ForeignKey(
-        'wagtailimages.Image',
+        "wagtailimages.Image",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='+'
+        related_name="+",
     )
 
-    content_panels = Page.content_panels + [
-        ImageChooserPanel("main_image"),
-    ]
+    content_panels = Page.content_panels + [ImageChooserPanel("main_image")]

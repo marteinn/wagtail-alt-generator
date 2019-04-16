@@ -24,7 +24,7 @@ image_cls = get_image_model()
 )
 def apply_image_alt(sender, instance, **kwargs):
     # Only run on new images
-    if not kwargs['created']:
+    if not kwargs["created"]:
         return
 
     provider = get_current_provider()()
@@ -56,6 +56,6 @@ def _apply_tags(instance, tags):
         return
 
     if app_settings.ALT_GENERATOR_MAX_TAGS != -1:
-        tags = tags[:app_settings.ALT_GENERATOR_MAX_TAGS]
+        tags = tags[: app_settings.ALT_GENERATOR_MAX_TAGS]
 
     instance.tags.add(*tags)
