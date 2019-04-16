@@ -35,7 +35,9 @@ setup(
     author="marteinn",
     author_email="martin@marteinn.se",
     url="https://github.com/marteinn/wagtail-alt-generator",
-    packages=find_packages(exclude=('tests*', 'example*')),
+    packages=find_packages(
+        exclude=("*.tests", "*.tests.*", "tests.*", "tests", 'example*')
+    ),
     include_package_data=True,
     install_requires=[
         'requests',
