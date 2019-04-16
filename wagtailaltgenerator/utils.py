@@ -1,6 +1,6 @@
-import requests
 import os
 
+import requests
 from django.utils.translation import get_language
 
 from wagtailaltgenerator.translation_providers import get_current_provider
