@@ -6,7 +6,6 @@ env:
 python:
   - "3.5"
   - "3.6"
-  - "pypy"
 
 install:
  - pip install -r requirements/tests.txt
