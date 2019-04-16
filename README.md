@@ -152,7 +152,7 @@ Google's Cloud Translation Api [docs](https://cloud.google.com/translate/docs/).
 
 #### Installing
 
-- `pip install wagtailaltgenerator[google_translate]
+- `pip install wagtailaltgenerator[google_translate]`
 
 #### Settings
 
