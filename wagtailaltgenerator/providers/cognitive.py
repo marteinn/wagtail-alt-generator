@@ -30,7 +30,7 @@ def describe_by_url(image_url):
     )
 
     if response.status_code != 200:
-        logging.warn([response, response.data])
+        logger.warning([response, response.text])
         return None
 
     return response.json()
@@ -50,7 +50,7 @@ def describe_by_data(image_data):
     )
 
     if response.status_code != 200:
-        logging.warn([response, response.data])
+        logger.warning([response, response.text])
         return None
 
     data = response.json()
