@@ -1,5 +1,5 @@
 wagtail==2.5.1
-psycopg2-binary==2.7.4
+psycopg2-binary==2.8.2
 wagtail-factories
 
 # Rekognition
