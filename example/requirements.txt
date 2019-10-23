@@ -3,7 +3,7 @@ psycopg2-binary==2.8.2
 wagtail-factories
 
 # Rekognition
-boto3>=1.4,<1.5
+boto3>=1.4,<1.11
 
 # Google Vision
 google-api-python-client>=1.5.5

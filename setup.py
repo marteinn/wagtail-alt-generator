@@ -45,7 +45,7 @@ setup(
     include_package_data=True,
     install_requires=["requests", "wagtail>=1.12"],
     extras_require={
-        "rekognition": ["boto3>=1.4,<1.5"],
+        "rekognition": ["boto3>=1.4,<1.11"],
         "google_vision": ["google-api-python-client>=1.5.5"],
         "google_translate": ["google-cloud-translate"],
     },
