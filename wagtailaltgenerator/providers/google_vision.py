@@ -6,7 +6,7 @@ from oauth2client.client import GoogleCredentials
 
 from wagtailaltgenerator import app_settings
 from wagtailaltgenerator.providers import AbstractProvider, DescriptionResult
-from wagtailaltgenerator.utils import get_image_data, get_local_image_data
+from wagtailaltgenerator.utils import get_image_data, get_local_image_data, get_original_rendition
 
 
 class GoogleVision(AbstractProvider):
@@ -17,7 +17,8 @@ class GoogleVision(AbstractProvider):
 
     def describe(self, image):
         if not image.is_stored_locally():
-            image_data = get_image_data(image.file.url)
+            rendition = get_original_rendition(image)
+            image_data = get_image_data(rendition.url)
         else:
             image_data = get_local_image_data(image.file)
 

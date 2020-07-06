@@ -1,10 +1,19 @@
 import os
-
 import requests
+
 from django.utils.translation import get_language
 
 from wagtailaltgenerator.translation_providers import get_current_provider
 from wagtailaltgenerator.providers import DescriptionResult
+
+
+def get_original_rendition(image):
+    """
+    Returns the original image rendition. Needed to get the correct image URL for processing
+    when using external storage (such as S3)
+    """
+    from wagtail.images.shortcuts import get_rendition_or_not_found
+    return get_rendition_or_not_found(image, 'original')
 
 
 def get_image_data(image_url):
