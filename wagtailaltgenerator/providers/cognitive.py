@@ -6,7 +6,7 @@ import requests
 
 from wagtailaltgenerator import app_settings
 from wagtailaltgenerator.providers import AbstractProvider, DescriptionResult
-from wagtailaltgenerator.utils import get_image_data, get_local_image_data
+from wagtailaltgenerator.utils import get_image_data, get_local_image_data, get_original_rendition
 
 
 API_URL = "https://{}.api.cognitive.microsoft.com"
@@ -61,13 +61,15 @@ class Cognitive(AbstractProvider):
     def describe(self, image):
         if app_settings.ALT_GENERATOR_PREFER_UPLOAD:
             if not image.is_stored_locally():
-                image_data = get_image_data(image.file.url)
+                rendition = get_original_rendition(image)
+                image_data = get_image_data(rendition.url)
                 data = describe_by_data(image_data)
             else:
                 image_data = get_local_image_data(image.file)
                 data = describe_by_data(image_data)
         else:
-            data = describe_by_url(image.file.url)
+            rendition = get_original_rendition(image)
+            data = describe_by_url(rendition.url)
 
         description = None
         tags = []

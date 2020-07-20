@@ -2,14 +2,18 @@ language: python
 dist: xenial
 
 env:
- - WAGTAIL_VERSION=2.4
+ - WAGTAIL_VERSION=2.7
+ - WAGTAIL_VERSION=2.9
 
 python:
   - "3.5"
   - "3.6"
+  - "3.7"
+  - "3.8"
 
 install:
  - pip install -r requirements/tests.txt
+ - pip install -q wagtail==$WAGTAIL_VERSION
 
 script:
  - python runtests.py

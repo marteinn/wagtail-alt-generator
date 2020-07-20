@@ -21,7 +21,7 @@ These are three of the most common settings:
 
 - `AWS_ACCESS_KEY_ID`: The access key for your AWS account
 - `AWS_SECRET_ACCESS_KEY`: The secret key for your AWS account
-- `AWS_DEFAULT_REGION`: The default region to use, e.g. us-west-2, eu-west-1, etc
+- `AWS_DEFAULT_REGION`: The default region to use, e.g. `us-west-2`, `eu-west-1`, etc
 
 You also need to define the provider:
 

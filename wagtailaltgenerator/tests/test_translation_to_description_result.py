@@ -1,13 +1,13 @@
 from unittest import mock
 
-from django.test import TestCase
+from django.test import SimpleTestCase
 
 from wagtailaltgenerator.translation_providers.google_translate import GoogleTranslate
 from wagtailaltgenerator.utils import translate_description_result
 from wagtailaltgenerator.providers import DescriptionResult
 
 
-class TranslationToDescriptionResultTest(TestCase):
+class TranslationToDescriptionResultTest(SimpleTestCase):
     @mock.patch.object(
         GoogleTranslate,
         "translate",
