@@ -13,9 +13,9 @@ Generate image description and tags with the help of computer vision (inspired b
 ## Features
 
 - Create image descriptions using computer vision
-- Generate tags using computer vision
+- Generate image tags using computer vision
 - Support for multiple service providers Azure Cognitive Services, AWS Rekognition and Google Vision
-- Translate descriptions to your native language usgin Google Translate
+- Translate descriptions to your native language using Google Translate
 
 
 ## Documentation
