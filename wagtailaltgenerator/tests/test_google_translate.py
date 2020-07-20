@@ -1,12 +1,12 @@
 from unittest import mock
 
-from django.test import TestCase
+from django.test import SimpleTestCase
 
 from wagtailaltgenerator.translation_providers import get_provider, get_current_provider
 from wagtailaltgenerator.translation_providers.google_translate import GoogleTranslate
 
 
-class GoogleTranslateTest(TestCase):
+class GoogleTranslateTest(SimpleTestCase):
     def test_that_current_provider_is_google_translate(self):
         self.assertEqual(get_current_provider(), GoogleTranslate)
 
