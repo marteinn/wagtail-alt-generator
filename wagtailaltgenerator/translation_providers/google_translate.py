@@ -1,7 +1,6 @@
 import logging
 
 from . import AbstractTranslationProvider
-from google.cloud import translate
 
 
 logger = logging.getLogger(__name__)
@@ -9,6 +8,8 @@ logger = logging.getLogger(__name__)
 
 class GoogleTranslate(AbstractTranslationProvider):
     def translate(self, strings, target_language, source_language="en"):
+        from google.cloud import translate
+
         client = translate.Client()
         response = client.translate(
             strings, source_language=source_language, target_language=target_language
