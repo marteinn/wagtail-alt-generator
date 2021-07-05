@@ -1,4 +1,4 @@
 -r tests.txt
 
-pypandoc==1.5
+pypandoc==1.6.3
 twine
